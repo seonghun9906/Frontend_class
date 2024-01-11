@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>회원가입</h2>
+    eamil : <input type="text" id="email" name="email" onblur="email_check()" placeholder="이메일을 입력하세요."><br>
+    <span id="email-check"></span><br>
+    password : <input type="text" id="password" name="password" onblur="pass_check()" placeholder="비밀번호를 입력하세요."><br>
+    <span id="password-check"></span><br>
+    password 확인 : <input type="text" id="password-re" name="passwordRe" onblur="pass_equal_check()"
+        placeholder="비밀번호가 일치합니다."><br>
+    <span id="password-equal-check"></span><br>
+</body>
+<script>
+    const email_check = () => {
+        const email = document.getElementById("email").value;
+        const emailCheck = document.getElementById("email-check");
+        console.log(email.length);
+        // 글자수가 5~10 글자가 안되면 5~0글자로 입력해달라고 빨간색 출력
+        // 5~10글자로 작성하면 좋아요 녹색 출력
+        if (email.length >= 5 && email.length <= 10) {
+            emailCheck.innerHTML = "좋아요";
+            emailCheck.style.color = "green";
+        } else {
+            emailCheck.innerHTML = "5~10글자로 입력해주세요."
+            emailCheck.style.color = "red";
+        }
+        if (email.length == 0) {
+            // alert("필수입력입니다!");
+            emailCheck.innerHTML = "필수입력입니다!!";
+            emailCheck.style.color = "red";
+        }
+        //alt + shift + F : VS code 정렬
+    }
+    const pass_equal_check = () => {
+        const password = document.getElementById("password").value;
+        const passwordRe = document.getElementById("password-re").value;
+        const passEqaulCheck = document.getElementById("password-equal-check");
+        const passWordCheck = document.getElementById("password-check");
+        if (passwordRe.length == 0) {
+            passEqaulCheck.innerHTML = "위의 비밀번호부터 넣어주시길 바랍니다.";
+            passEqaulCheck.style.color = "red";
+        } else if (password == passwordRe) {
+            passEqaulCheck.innerHTML = "비밀번호가 일치합니다.";
+            passEqaulCheck.style.color = "green";
+        }
+        else {
+            passEqaulCheck.innerHTML = "비밀전호가 불일치합니다.";
+            passEqaulCheck.style.color = "red";
+        };
+    }
+    const pass_check = () => {
+        const password = document.getElementById("password").value;
+        const passWordCheck = document.getElementById("password-check");
+        if (password.length == 0) {
+            passWordCheck.innerHTML = "필수입력입니다.";
+            passWordCheck.style.color = "red";
+
+        } else {
+            passWordCheck.innerHTML = "좋습니다!"
+            passWordCheck.style.color = "green";
+        }
+    }
+
+
+</script>
+
+</html>

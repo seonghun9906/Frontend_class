@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 두 점수의 평균이 90이상 A, 80점이상 B , 70이상 C 나머지는 F -->
+    java 점수 : <input type="text" id="java"> <br>
+    html 점수 : <input type="text" id="html"> <br>
+    학점 : <input type="text" id="grade">
+    <!-- 아래 h2에는 당신의 학점은 00입니다. 로 출력 -->
+    <h2 id="grade1"></h2>
+    <button onclick="gradeCal()">학점계산</button>
+</body>
+<script>
+    const gradeCal = () => {
+        const java = document.getElementById("java");
+        const html = document.getElementById("html");
+        const grade = document.getElementById("grade");
+        const gradeValue = (Number(java.value) + Number(html.value)) / 2;
+        if (gradeValue >= 90) {
+            grade.value = "A입니다."
+        } else if (gradeValue >= 80) {
+            grade.value = "B입니다."
+        } else if (gradeValue >= 70) {
+            grade.value = "C입니다."
+        } else {
+            grade.value = "F입니다."
+        }
+
+
+        const grade1 = document.getElementById("grade1");
+        grade1.innerText = "당신의 학점은 " + grade.value;
+    }
+
+
+</script>
+
+</html>
